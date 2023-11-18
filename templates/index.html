@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>Get Youtube Thumbnail</h1>
+    <input type="url" id="link_video" name="link_video" required />
+    <button onclick="get_thumbnail()">Get it now</button>
+
+    <br />
+    <br />
+
+    <div>
+      <img id="img" src="" />
+      <a style="display: none" id="button_download" href="" download
+        >download</a
+      >
+    </div>
+
+    <script>
+      function get_thumbnail() {
+        const link_video = document.getElementById("link_video");
+        const video_id = link_video.value.split("v=")[1];
+        document
+          .getElementById("img")
+          .setAttribute(
+            "src",
+            `https://i3.ytimg.com/vi/${video_id}/maxresdefault.jpg`
+          );
+
+        generate_download(video_id);
+      }
+
+      function generate_download(video_id) {
+        const download_link = document.getElementById("button_download");
+        download_link.setAttribute(
+          "href",
+          `https://i3.ytimg.com/vi/${video_id}/maxresdefault.jpg`
+        );
+        download_link.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
